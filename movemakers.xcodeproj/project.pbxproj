@@ -17,6 +17,7 @@
 		C1FBAA022BEC0FDD001873E0 /* DancerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBAA012BEC0FDD001873E0 /* DancerRow.swift */; };
 		C1FBAA042BEC13CD001873E0 /* DancerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBAA032BEC13CD001873E0 /* DancerList.swift */; };
 		C1FBAA062BEC156A001873E0 /* DancerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBAA052BEC156A001873E0 /* DancerDetail.swift */; };
+		C1FBAA082BEC1DFA001873E0 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBAA072BEC1DFA001873E0 /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		C1FBAA012BEC0FDD001873E0 /* DancerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DancerRow.swift; sourceTree = "<group>"; };
 		C1FBAA032BEC13CD001873E0 /* DancerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DancerList.swift; sourceTree = "<group>"; };
 		C1FBAA052BEC156A001873E0 /* DancerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DancerDetail.swift; sourceTree = "<group>"; };
+		C1FBAA072BEC1DFA001873E0 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				C1FBAA012BEC0FDD001873E0 /* DancerRow.swift */,
 				C1FBAA032BEC13CD001873E0 /* DancerList.swift */,
 				C1FBAA052BEC156A001873E0 /* DancerDetail.swift */,
+				C1FBAA072BEC1DFA001873E0 /* CircleImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C19E54392BEBECA700DC7AF1 /* ContentView.swift in Sources */,
+				C1FBAA082BEC1DFA001873E0 /* CircleImage.swift in Sources */,
 				C1FBAA062BEC156A001873E0 /* DancerDetail.swift in Sources */,
 				C1D321F62BEC09CB002E8EAF /* ModelData.swift in Sources */,
 				C1FBAA042BEC13CD001873E0 /* DancerList.swift in Sources */,

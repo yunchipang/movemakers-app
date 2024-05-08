@@ -13,7 +13,7 @@ struct DancerList: View {
         NavigationSplitView {
             List(dancers) { dancer in
                 NavigationLink {
-                    DancerDetail()
+                    DancerDetail(dancer: dancer)
                 } label: {
                     DancerRow(dancer: dancer)
                 }
