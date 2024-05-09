@@ -20,6 +20,11 @@ struct DancerRow: View {
             Text(dancer.name)
             
             Spacer()
+            
+            if dancer.isFavorite {
+                Image(systemName: "star.fill")
+                    .foregroundStyle(.yellow)
+            }
         }
     }
 }

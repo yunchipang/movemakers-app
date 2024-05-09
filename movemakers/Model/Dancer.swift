@@ -16,6 +16,7 @@ struct Dancer: Hashable, Codable, Identifiable {
     var nationality: String?
     var basedIn: String?
     var instagram: String?
+    var isFavorite: Bool
     
     private var profilePicName: String
     var profilePic: Image {
