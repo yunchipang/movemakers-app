@@ -9,10 +9,11 @@ import SwiftUI
 
 
 struct DancerList: View {
-    @State private var showFavoritesOnly = true
+    @Environment(ModelData.self) var modelData
+    @State private var showFavoritesOnly = false
     
     var filteredDancers: [Dancer] {
-        dancers.filter { dancer in
+        modelData.dancers.filter { dancer in
             (!showFavoritesOnly || dancer.isFavorite)
         }
     }
@@ -42,5 +43,5 @@ struct DancerList: View {
 }
 
 #Preview {
-    DancerList()
+    DancerDetail(dancer: ModelData().dancers[0])
 }

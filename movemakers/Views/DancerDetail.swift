@@ -33,5 +33,5 @@ struct DancerDetail: View {
 }
 
 #Preview {
-    DancerDetail(dancer: dancers[0])
+    DancerDetail(dancer: ModelData().dancers[0])
 }

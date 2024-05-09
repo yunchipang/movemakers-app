@@ -30,6 +30,9 @@ struct DancerRow: View {
 }
 
 #Preview {
-    DancerRow(dancer: dancers[0])
+    let dancers = ModelData().dancers
+    return Group {
+        DancerRow(dancer: dancers[0])
+        DancerRow(dancer: dancers[1])
+    }
 }
-
