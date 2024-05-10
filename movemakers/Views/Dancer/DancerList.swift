@@ -7,41 +7,22 @@
 
 import SwiftUI
 
-
 struct DancerList: View {
-    @Environment(ModelData.self) var modelData
-    @State private var showFavoritesOnly = false
-    
-    var filteredDancers: [Dancer] {
-        modelData.dancers.filter { dancer in
-            (!showFavoritesOnly || dancer.isFavorite)
-        }
-    }
+    @ObservedObject var viewModel: DancerViewModel
 
-    
     var body: some View {
-        NavigationSplitView {
-            List {
-                Toggle(isOn: $showFavoritesOnly) {
-                    Text("favs only")
-                }
-                ForEach(filteredDancers) {dancer in
-                    NavigationLink {
-                        DancerDetail(dancer: dancer)
-                    } label: {
-                        DancerRow(dancer: dancer)
-                    }
+        List {
+            ForEach(viewModel.dancers, id: \.id) { dancer in
+                NavigationLink {
+                    DancerDetail(viewModel: viewModel, dancer: dancer)
+                } label: {
+                    DancerRow(dancer: dancer)  // ensure DancerRow can display necessary information
                 }
             }
-            .animation(.default, value: filteredDancers)
-            .navigationTitle("Dancers")
-        } detail: {
-            Text("Select a dancer")
         }
-        
+        .navigationTitle("dancers")
+        .onAppear {
+            viewModel.loadDancers()
+        }
     }
-}
-
-#Preview {
-    DancerDetail(dancer: ModelData().dancers[0])
 }

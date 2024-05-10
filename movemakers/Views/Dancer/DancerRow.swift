@@ -12,27 +12,12 @@ struct DancerRow: View {
     
     var body: some View {
         HStack {
-            dancer.profilePic
+            dancer.image()
                 .resizable()
                 .scaledToFit()
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
             Text(dancer.name)
-            
-            Spacer()
-            
-            if dancer.isFavorite {
-                Image(systemName: "star.fill")
-                    .foregroundStyle(.yellow)
-            }
         }
-    }
-}
-
-#Preview {
-    let dancers = ModelData().dancers
-    return Group {
-        DancerRow(dancer: dancers[0])
-        DancerRow(dancer: dancers[1])
     }
 }

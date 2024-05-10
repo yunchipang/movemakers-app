@@ -16,13 +16,5 @@ struct CircleImage: View {
             .resizable()
             .scaledToFit()
             .clipShape(Circle())
-            .overlay {
-                Circle().stroke(.white, lineWidth: 4)
-            }
     }
-}
-
-
-#Preview {
-    CircleImage(image: Image("bada-profile-pic"))
 }
