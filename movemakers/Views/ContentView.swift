@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var dancerViewModel = DancerViewModel()
+
     var body: some View {
-        DancerList()
+        NavigationView {
+            DancerList(viewModel: dancerViewModel)
+        }
     }
 }
 

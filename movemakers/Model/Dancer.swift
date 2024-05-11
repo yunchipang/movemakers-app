@@ -9,16 +9,25 @@ import Foundation
 import SwiftUI
 
 struct Dancer: Hashable, Codable, Identifiable {
-    var id: Int
+    var id: String
     var name: String
+    var nameOrig: String
+    var imageUrl: String
+    var pronouns: String?
     var bio: String?
     var dateOfBirth: String?
     var nationality: String?
     var basedIn: String?
     var instagram: String?
+    var youtube: String?
+    var agency: String?
+    var contactEmail: String?
     
-    private var profilePicName: String
-    var profilePic: Image {
-        Image(profilePicName)
+    func image() -> Image {
+        if let uiImage = UIImage(data: try! Data(contentsOf: URL(string: imageUrl)!)) {
+            return Image(uiImage: uiImage)
+        } else {
+            return Image(systemName: "person.fill")  // fallback to a default system image
+        }
     }
 }
