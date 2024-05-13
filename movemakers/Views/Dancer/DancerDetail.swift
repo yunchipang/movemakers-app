@@ -36,7 +36,8 @@ struct DancerDetail: View {
                 
                 if !viewModel.crews.isEmpty {
                     ForEach(viewModel.crews, id: \.id) { crew in
-                        TagView(text: crew.name, backgroundColor: .gray, textColor: .white)
+                        let instagramUrl = URL(string: "https://instagram.com/\(crew.instagram)")
+                        TagView(text: crew.name, backgroundColor: .gray, textColor: .white, url: instagramUrl)
                             .padding(.bottom, 1)
                     }
                 }

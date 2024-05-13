@@ -14,7 +14,7 @@ struct Crew: Codable, Identifiable {
     var basedIn: String?
     var foundedIn: Int?
     var styles: [Style]
-    var instagram: String?
+    var instagram: String
     var youtube: String?
     var website: String?
     var isActive: Bool?
