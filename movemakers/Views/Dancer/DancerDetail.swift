@@ -34,12 +34,25 @@ struct DancerDetail: View {
                         .font(.title)
                 }
                 
-                if !viewModel.crews.isEmpty {
-                    ForEach(viewModel.crews, id: \.id) { crew in
-                        let instagramUrl = URL(string: "https://instagram.com/\(crew.instagram)")
-                        TagView(text: crew.name, backgroundColor: .gray, textColor: .white, url: instagramUrl)
-                            .padding(.bottom, 1)
+                // horizontal scroll for crews
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(viewModel.crews, id: \.id) { crew in
+                            let url = URL(string: "https://instagram.com/\(crew.instagram)")
+                            if !crew.instagram.isEmpty {
+                                TagView(text: crew.name, backgroundColor: .gray, textColor: .white, url: url)
+                                    .padding(.trailing, 10)
+                            } else {
+                                TagView(text: crew.name, backgroundColor: .gray, textColor: .white)
+                                    .padding(.trailing, 10)
+                            }
+                        }
                     }
+                }
+                
+                if let agency = viewModel.dancer.agency, !agency.isEmpty {
+                    TagView(text: agency, backgroundColor: .pink, textColor: .white)
+                        .padding(.bottom, 1)
                 }
 
                 Divider()
