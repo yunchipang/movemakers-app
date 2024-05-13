@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct DancerDetail: View {
-    @ObservedObject var viewModel: DancerViewModel
-    var dancer: Dancer
-    
-    private var dancerIndex: Int {
-        viewModel.dancers.firstIndex(where: { $0.id == dancer.id })!
+    @ObservedObject var viewModel: DancerDetailViewModel
+
+    init(dancer: Dancer) {
+        self.viewModel = DancerDetailViewModel(dancer: dancer)
     }
-    
+
     var body: some View {
         ScrollView {
-            AsyncImage(url: URL(string: dancer.imageUrl)) { image in
+            AsyncImage(url: URL(string: viewModel.dancer.imageUrl)) { image in
                 image.resizable()
             } placeholder: {
                 ProgressView()
@@ -31,17 +30,24 @@ struct DancerDetail: View {
             
             VStack(alignment: .leading) {
                 HStack {
-                    Text(dancer.name)
+                    Text(viewModel.dancer.name)
                         .font(.title)
                 }
                 
+                if !viewModel.crews.isEmpty {
+                    ForEach(viewModel.crews, id: \.id) { crew in
+                        let instagramUrl = URL(string: "https://instagram.com/\(crew.instagram)")
+                        TagView(text: crew.name, backgroundColor: .gray, textColor: .white, url: instagramUrl)
+                            .padding(.bottom, 1)
+                    }
+                }
+
                 Divider()
                 
-                Text(dancer.bio ?? "No biography available")
+                Text(viewModel.dancer.bio ?? "No biography available")
             }
             .padding()
         }
-        .navigationTitle(dancer.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
