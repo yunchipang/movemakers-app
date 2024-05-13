@@ -11,13 +11,11 @@ struct DancerList: View {
     @ObservedObject var viewModel: DancerViewModel
 
     var body: some View {
-        List {
-            ForEach(viewModel.dancers, id: \.id) { dancer in
-                NavigationLink {
-                    DancerDetail(viewModel: viewModel, dancer: dancer)
-                } label: {
-                    DancerRow(dancer: dancer)  // ensure DancerRow can display necessary information
-                }
+        List(viewModel.dancers, id: \.id) { dancer in
+            NavigationLink {
+                DancerDetail(dancer: dancer)
+            } label: {
+                DancerRow(dancer: dancer)
             }
         }
         .navigationTitle("dancers")
