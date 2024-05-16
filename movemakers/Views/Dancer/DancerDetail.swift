@@ -16,18 +16,14 @@ struct DancerDetail: View {
 
     var body: some View {
         ScrollView {
-            AsyncImage(url: URL(string: viewModel.dancer.imageUrl)) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 300, height: 300)
-            .clipShape(Circle())
-            .padding(.top, 130)
-            .offset(y: -130)
-            .padding(.bottom, -130)
-            
+            DancerImageView(imageUrl: viewModel.dancer.imageUrl)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 300, height: 300)
+                .clipShape(Circle())
+                .padding(.top, 130)
+                .offset(y: -130)
+                .padding(.bottom, -130)
+
             VStack(alignment: .leading) {
                 HStack {
                     Text(viewModel.dancer.name)

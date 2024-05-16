@@ -12,9 +12,7 @@ struct DancerRow: View {
     
     var body: some View {
         HStack {
-            dancer.image()
-                .resizable()
-                .scaledToFit()
+            DancerImageView(imageUrl: dancer.imageUrl)
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
             Text(dancer.name)
