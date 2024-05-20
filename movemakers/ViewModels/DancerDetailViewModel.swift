@@ -13,12 +13,12 @@ class DancerDetailViewModel: ObservableObject {
 
     init(dancer: Dancer) {
         self.dancer = dancer
-        fetchCrewsForDancer(dancerId: dancer.id)
+        fetchCrews(dancerId: dancer.id)
         
-        // todo: fetch studios where the dancer teaches at
+        // todo: fetch studios where this dancer teaches at
     }
 
-    func fetchCrewsForDancer(dancerId: String) {
+    func fetchCrews(dancerId: String) {
         APIService.shared.fetchData(from: "http://localhost:8000/crews/?dancer_id=\(dancerId)") { [weak self] (result: Result<[Crew], Error>) in
             DispatchQueue.main.async {
                 switch result {

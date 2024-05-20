@@ -16,29 +16,44 @@ struct DancerDetail: View {
 
     var body: some View {
         ScrollView {
-            AsyncImage(url: URL(string: viewModel.dancer.imageUrl)) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 300, height: 300)
-            .clipShape(Circle())
-            .padding(.top, 130)
-            .offset(y: -130)
-            .padding(.bottom, -130)
-            
+            DancerImageView(imageUrl: viewModel.dancer.imageUrl)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 300, height: 300)
+                .clipShape(Circle())
+                .padding(.top, 130)
+                .offset(y: -130)
+                .padding(.bottom, -130)
+
             VStack(alignment: .leading) {
                 HStack {
                     Text(viewModel.dancer.name)
                         .font(.title)
                 }
                 
-                if !viewModel.crews.isEmpty {
-                    ForEach(viewModel.crews, id: \.id) { crew in
-                        let instagramUrl = URL(string: "https://instagram.com/\(crew.instagram)")
-                        TagView(text: crew.name, backgroundColor: .gray, textColor: .white, url: instagramUrl)
-                            .padding(.bottom, 1)
+                // horizontal scroll for crews
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(viewModel.crews, id: \.id) { crew in
+                            let url = URL(string: "https://instagram.com/\(crew.instagram)")
+                            if !crew.instagram.isEmpty {
+                                TagView(text: crew.name, backgroundColor: .gray, textColor: .white, url: url)
+                                    .padding(.trailing, 10)
+                            } else {
+                                TagView(text: crew.name, backgroundColor: .gray, textColor: .white)
+                                    .padding(.trailing, 10)
+                            }
+                        }
+                    }
+                }
+                // todo: display contacts
+                if let contacts = viewModel.dancer.contacts, !contacts.isEmpty {
+                    ForEach(contacts, id: \.id) { contact in
+                        VStack(alignment: .leading) {
+                            if let agency = contact.agency {
+                                TagView(text: agency.name, backgroundColor: .pink, textColor: .white)
+                                    .padding(.trailing, 10)
+                            }
+                        }
                     }
                 }
 

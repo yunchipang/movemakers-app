@@ -20,14 +20,5 @@ struct Dancer: Hashable, Codable, Identifiable {
     var basedIn: String?
     var instagram: String?
     var youtube: String?
-    var agency: String?
-    var contactEmail: String?
-    
-    func image() -> Image {
-        if let uiImage = UIImage(data: try! Data(contentsOf: URL(string: imageUrl)!)) {
-            return Image(uiImage: uiImage)
-        } else {
-            return Image(systemName: "person.fill")  // fallback to a default system image
-        }
-    }
+    var contacts: [Contact]?
 }
