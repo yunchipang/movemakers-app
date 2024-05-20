@@ -45,10 +45,16 @@ struct DancerDetail: View {
                         }
                     }
                 }
-                
-                if let agency = viewModel.dancer.agency, !agency.isEmpty {
-                    TagView(text: agency, backgroundColor: .pink, textColor: .white)
-                        .padding(.bottom, 1)
+                // todo: display contacts
+                if let contacts = viewModel.dancer.contacts, !contacts.isEmpty {
+                    ForEach(contacts, id: \.id) { contact in
+                        VStack(alignment: .leading) {
+                            if let agency = contact.agency {
+                                TagView(text: agency.name, backgroundColor: .pink, textColor: .white)
+                                    .padding(.trailing, 10)
+                            }
+                        }
+                    }
                 }
 
                 Divider()

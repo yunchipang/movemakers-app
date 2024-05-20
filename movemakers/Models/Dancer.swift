@@ -20,6 +20,5 @@ struct Dancer: Hashable, Codable, Identifiable {
     var basedIn: String?
     var instagram: String?
     var youtube: String?
-    var agency: String?
-    var contactEmail: String?
+    var contacts: [Contact]?
 }
