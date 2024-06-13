@@ -14,35 +14,39 @@ struct SignupView: View {
     @State private var lastName: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
 
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    TextField("email", text: $email)
-                        .autocapitalization(.none)
-                        .keyboardType(.emailAddress)
-                    TextField("username", text: $username)
-                        .autocapitalization(.none)
-                    TextField("first name", text: $firstName)
-                    TextField("last name", text: $lastName)
-                    HStack {
-                        if isPasswordVisible {
-                            TextField("password", text: $password)
-                                .autocapitalization(.none)
-                        } else {
-                            SecureField("password", text: $password)
-                        }
-                        Button(action: {
-                            isPasswordVisible.toggle();
-                        }) {
-                            Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
-                                .foregroundColor(.blue)
+            VStack {
+                Form {
+                    Section {
+                        TextField("email", text: $email)
+                            .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
+                        TextField("username", text: $username)
+                            .autocapitalization(.none)
+                        TextField("first Name", text: $firstName)
+                        TextField("last Name", text: $lastName)
+                        HStack {
+                            if isPasswordVisible {
+                                TextField("password", text: $password)
+                                    .autocapitalization(.none)
+                            } else {
+                                SecureField("password", text: $password)
+                            }
+                            Button(action: {
+                                isPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
+                                    .foregroundColor(.blue)
+                            }
                         }
                     }
                 }
-
-                Button("sign up") {
+                
+                Button("Sign Up") {
                     signUpUser()
                 }
                 .disabled(email.isEmpty || username.isEmpty || password.isEmpty)
@@ -51,7 +55,10 @@ struct SignupView: View {
                 .background(email.isEmpty || username.isEmpty || password.isEmpty ? Color.gray : Color.blue)
                 .cornerRadius(8)
             }
-            .navigationBarTitle("sign up", displayMode: .inline)
+            .navigationBarTitle("Sign Up", displayMode: .inline)
+            .alert(isPresented: $showingAlert) { // presents alert when showingAlert is true
+                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
     
@@ -70,11 +77,17 @@ struct SignupView: View {
                 print("Signup successful: \(user)")
                 // handle successful signup, e.g., navigate or update UI
             case .failure(let error):
-                print("Signup failed with error: \(error.localizedDescription)")
-                // handle error, e.g., show error message to user
+                print("Signup failed: \(error)")
+                DispatchQueue.main.async {
+                    ErrorHandling.parseAPIError(error) { message in
+                        self.alertMessage = message
+                        self.showingAlert = true
+                    }
+                }
             }
         }
     }
+
 }
 
 #Preview {

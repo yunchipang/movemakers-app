@@ -60,14 +60,25 @@ class APIService {
                     return
                 }
 
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    completion(.failure(NSError(domain: "APIService", code: -4, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])))
+                    return
+                }
+
+                if !(200...299).contains(httpResponse.statusCode) {
+                    if let data = data, let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: data) {
+                        completion(.failure(NSError(domain: "APIService", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "API Error: \(apiErrorResponse.detail)"])))
+                    } else {
+                        completion(.failure(NSError(domain: "APIService", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "Server error with status code: \(httpResponse.statusCode)"])))
+                    }
+                    return
+                }
+
                 guard let data = data else {
                     completion(.failure(NSError(domain: "APIService", code: -2, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
                     return
                 }
-                
-                // debug
-                print(String(data: data, encoding: .utf8) ?? "No readable data")
-                
+
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do {
