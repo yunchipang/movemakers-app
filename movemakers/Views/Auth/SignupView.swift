@@ -22,19 +22,38 @@ struct SignupView: View {
             VStack {
                 Form {
                     Section {
-                        TextField("email", text: $email)
-                            .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
-                        TextField("username", text: $username)
-                            .autocapitalization(.none)
-                        TextField("first Name", text: $firstName)
-                        TextField("last Name", text: $lastName)
+                        HStack{
+                            Text("email:")
+                            TextField("johndoe@example.com", text: $email)
+                                .autocapitalization(.none)
+                                .keyboardType(.emailAddress)
+                        }
+                        .overlay(alignment: .leading) {
+                            Text("*")
+                                .offset(x: -30, y: 0)
+                                .foregroundColor(.red)
+                        }
                         HStack {
+                            Text("username:")
+                            TextField("johndoe", text: $username)
+                                .autocapitalization(.none)
+                        }
+                        HStack {
+                            Text("first name:")
+                            TextField("John", text: $firstName)
+                        }
+                        HStack {
+                            Text("last name:")
+                            TextField("Doe", text: $lastName)
+                        }
+                        
+                        HStack {
+                            Text("password:")
                             if isPasswordVisible {
-                                TextField("password", text: $password)
+                                TextField("johndoe123", text: $password)
                                     .autocapitalization(.none)
                             } else {
-                                SecureField("password", text: $password)
+                                SecureField("johndoe123", text: $password)
                             }
                             Button(action: {
                                 isPasswordVisible.toggle()
