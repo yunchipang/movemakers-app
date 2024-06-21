@@ -9,7 +9,25 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text("profile goes here")
-            .navigationTitle("profile")
+        NavigationView {
+            VStack {
+                NavigationLink("Login", destination: LoginView())
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+
+                NavigationLink("Sign Up", destination: SignupView())
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.green)
+                    .cornerRadius(10)
+            }
+            .navigationTitle("Welcome")
+        }
     }
+}
+
+#Preview {
+    ProfileView()
 }

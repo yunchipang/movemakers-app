@@ -21,6 +21,10 @@
 		C19E54392BEBECA700DC7AF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E54382BEBECA700DC7AF1 /* ContentView.swift */; };
 		C19E543B2BEBECA800DC7AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19E543A2BEBECA800DC7AF1 /* Assets.xcassets */; };
 		C19E543E2BEBECA800DC7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19E543D2BEBECA800DC7AF1 /* Preview Assets.xcassets */; };
+		C1AC2E262C1A440A0044A36A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC2E252C1A440A0044A36A /* SignupView.swift */; };
+		C1AC2E282C1A45750044A36A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC2E272C1A45750044A36A /* LoginView.swift */; };
+		C1AC2E2A2C1A57AB0044A36A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC2E292C1A57AB0044A36A /* User.swift */; };
+		C1AC2E2C2C1BAD290044A36A /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC2E2B2C1BAD290044A36A /* ErrorHandling.swift */; };
 		C1D321F42BEBF313002E8EAF /* Dancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D321F32BEBF313002E8EAF /* Dancer.swift */; };
 		C1D321F62BEC09CB002E8EAF /* DancerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D321F52BEC09CB002E8EAF /* DancerViewModel.swift */; };
 		C1FBAA022BEC0FDD001873E0 /* DancerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBAA012BEC0FDD001873E0 /* DancerRow.swift */; };
@@ -49,6 +53,10 @@
 		C19E54382BEBECA700DC7AF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C19E543A2BEBECA800DC7AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C19E543D2BEBECA800DC7AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C1AC2E252C1A440A0044A36A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		C1AC2E272C1A45750044A36A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C1AC2E292C1A57AB0044A36A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C1AC2E2B2C1BAD290044A36A /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		C1D321F32BEBF313002E8EAF /* Dancer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dancer.swift; sourceTree = "<group>"; };
 		C1D321F52BEC09CB002E8EAF /* DancerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DancerViewModel.swift; sourceTree = "<group>"; };
 		C1FBAA012BEC0FDD001873E0 /* DancerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DancerRow.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				C1741E152BF6B81800582794 /* ImageLoader.swift */,
+				C1AC2E2B2C1BAD290044A36A /* ErrorHandling.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -128,9 +137,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C1AC2E242C1A43E10044A36A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C1AC2E252C1A440A0044A36A /* SignupView.swift */,
+				C1AC2E272C1A45750044A36A /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		C1D321F92BEC0A90002E8EAF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1AC2E242C1A43E10044A36A /* Auth */,
 				C19E54382BEBECA700DC7AF1 /* ContentView.swift */,
 				C1708B802BEFFEC900ABB0B6 /* ProfileView.swift */,
 				C1708B822BEFFF1400ABB0B6 /* FindView.swift */,
@@ -149,6 +168,7 @@
 				C1708B882BF279D800ABB0B6 /* Enums.swift */,
 				C1741E172BF6BB8C00582794 /* Contact.swift */,
 				C1741E192BF6BC1600582794 /* Agency.swift */,
+				C1AC2E292C1A57AB0044A36A /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,9 +284,11 @@
 				C1FBAA142BED28E0001873E0 /* DancerList.swift in Sources */,
 				C19E54392BEBECA700DC7AF1 /* ContentView.swift in Sources */,
 				C1741E162BF6B81800582794 /* ImageLoader.swift in Sources */,
+				C1AC2E2A2C1A57AB0044A36A /* User.swift in Sources */,
 				C1FBAA082BEC1DFA001873E0 /* CircleImage.swift in Sources */,
 				C1708B852BF2789E00ABB0B6 /* DancerDetailViewModel.swift in Sources */,
 				C1FBAA062BEC156A001873E0 /* DancerDetail.swift in Sources */,
+				C1AC2E282C1A45750044A36A /* LoginView.swift in Sources */,
 				C1741E182BF6BB8C00582794 /* Contact.swift in Sources */,
 				C1708B832BEFFF1400ABB0B6 /* FindView.swift in Sources */,
 				C1708B872BF278CC00ABB0B6 /* Crew.swift in Sources */,
@@ -280,9 +302,11 @@
 				C1741E132BF6B7D900582794 /* DancerImage.swift in Sources */,
 				C1708B892BF279D800ABB0B6 /* Enums.swift in Sources */,
 				C19E54372BEBECA700DC7AF1 /* movemakersApp.swift in Sources */,
+				C1AC2E2C2C1BAD290044A36A /* ErrorHandling.swift in Sources */,
 				C1708B812BEFFEC900ABB0B6 /* ProfileView.swift in Sources */,
 				C1FBAA152BED28E0001873E0 /* DancerRow.swift in Sources */,
 				C1708B8C2BF27EEC00ABB0B6 /* TagView.swift in Sources */,
+				C1AC2E262C1A440A0044A36A /* SignupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
